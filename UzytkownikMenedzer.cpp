@@ -1,5 +1,6 @@
 #include "UzytkownikMenedzer.h"
 #include "MetodyPomocnicze.h"
+#include "PlikZUzytkownikami.h"
 
 void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
@@ -20,8 +21,7 @@ void UzytkownikMenedzer::logowanieUzytkownika()
 
     cout << "LOGOWANIE UZYTKOWNIKA" << endl;
     cout << "Podaj login: ";
-    MetodyPomocnicze::wczytajLinie();
-    login = MetodyPomocnicze::wczytajLinie();
+    cin >> login;
 
     for (int i = 0; i < (int) uzytkownicy.size(); i++)
     {
@@ -30,7 +30,7 @@ void UzytkownikMenedzer::logowanieUzytkownika()
             for (int iloscProb = 3; iloscProb > 0; iloscProb--)
             {
                 cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                haslo = MetodyPomocnicze::wczytajLinie();
+                cin >> haslo;
 
                 if (uzytkownicy[i].pobierzHaslo() == haslo)
                 {
@@ -38,7 +38,6 @@ void UzytkownikMenedzer::logowanieUzytkownika()
                     system("pause");
 
                     idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId();
-                    cout << "ID zalogowanego uzytkownika: " << idZalogowanegoUzytkownika;
                     return;
                 }
             }
@@ -64,7 +63,7 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
         cout << "Podaj login: ";
         cin >> login;
          uzytkownik.ustawLogin(login);
-    } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
+    } while (czyIstniejeLogin(uzytkownik.pobierzLogin()));
 
     string haslo;
     cout << "Podaj haslo: ";
@@ -76,7 +75,7 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
 
 int UzytkownikMenedzer::pobierzIdNowegoUzytkownika()
 {
-    if (uzytkownicy.empty() == true)
+    if (uzytkownicy.empty())
         return 1;
     else
         return uzytkownicy.back().pobierzId() + 1;
@@ -105,12 +104,40 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
     }
 }
 
-void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
 {
     return idZalogowanegoUzytkownika;
 }
+
+void UzytkownikMenedzer::wylogowanieUzytkownika()
+{
+    idZalogowanegoUzytkownika = 0;
+    cout << "ID zalogowanego uzytkownika: " << idZalogowanegoUzytkownika;
+}
+
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
+{
+    if (idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
+}
+
+void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
+{
+    string noweHaslo = "";
+    cout << "Podaj nowe haslo: ";
+    cin >> noweHaslo;
+
+    for (int i=0; i < (int) uzytkownicy.size(); i++)
+    {
+        if (uzytkownicy[i].pobierzId() == idZalogowanegoUzytkownika)
+        {
+            uzytkownicy[i].ustawHaslo(noweHaslo);
+            cout << "Haslo zostalo zmienione." << endl;
+            system("pause");
+        }
+    }
+    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+}
+

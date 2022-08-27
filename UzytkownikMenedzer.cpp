@@ -62,7 +62,7 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
     {
         cout << "Podaj login: ";
         cin >> login;
-         uzytkownik.ustawLogin(login);
+        uzytkownik.ustawLogin(login);
     } while (czyIstniejeLogin(uzytkownik.pobierzLogin()));
 
     string haslo;

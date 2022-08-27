@@ -1,4 +1,5 @@
 #include "KsiazkaAdresowa.h"
+#include "PlikZUzytkownikami.h"
 
 void KsiazkaAdresowa::rejestracjaUzytkownika()
 {
@@ -10,6 +11,7 @@ void KsiazkaAdresowa::logowanieUzytkownika()
     uzytkownikMenedzer.logowanieUzytkownika();
     if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())
     {
+        adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
     }
 }
 
@@ -26,11 +28,41 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
 void KsiazkaAdresowa::wylogowanieUzytkownika()
 {
     uzytkownikMenedzer.wylogowanieUzytkownika();
+    delete adresatMenedzer;
+    adresatMenedzer = NULL;
 }
 
 bool KsiazkaAdresowa::czyUzytkownikJestZalogowany()
 {
     return uzytkownikMenedzer.czyUzytkownikJestZalogowany();
+}
+
+void KsiazkaAdresowa::dodajAdresata()
+{
+    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())
+    {
+        adresatMenedzer->dodajAdresata();
+    }
+    else
+    {
+        cout << "Najpierw zaloguj sie, aby dodac adresata" << endl;
+        system("pause");
+    }
+}
+
+void KsiazkaAdresowa::wypiszWszystkichAdresatowDanegoUzytkownika()
+{
+    adresatMenedzer->wyswietlWszystkichAdresatow();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu()
+{
+    adresatMenedzer->wyszukajAdresatowPoImieniu();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku()
+{
+    adresatMenedzer->wyszukajAdresatowPoNazwisku();
 }
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego()

@@ -13,9 +13,10 @@ using namespace std;
 
 class PlikZAdresatami
 {
+    fstream plikTekstowy;
     const string NAZWA_PLIKU_Z_ADRESATAMI;
     int idOstatniegoAdresata;
-    bool czyPlikJestPusty();
+    bool czyPlikJestPusty(fstream &plikTekstowy);
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
 
 public:

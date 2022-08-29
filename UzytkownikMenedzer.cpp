@@ -35,8 +35,6 @@ void UzytkownikMenedzer::logowanieUzytkownika()
                 if (uzytkownicy[i].pobierzHaslo() == haslo)
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
-                    system("pause");
-
                     idZalogowanegoUzytkownika = uzytkownicy[i].pobierzId();
                     return;
                 }
@@ -75,10 +73,7 @@ Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
 
 int UzytkownikMenedzer::pobierzIdNowegoUzytkownika()
 {
-    if (uzytkownicy.empty())
-        return 1;
-    else
-        return uzytkownicy.back().pobierzId() + 1;
+    return uzytkownicy.empty() ? 1 : (uzytkownicy.back().pobierzId() + 1);
 }
 
 bool UzytkownikMenedzer::czyIstniejeLogin(string login)
@@ -112,15 +107,11 @@ int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
 void UzytkownikMenedzer::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
-    cout << "ID zalogowanego uzytkownika: " << idZalogowanegoUzytkownika;
 }
 
 bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
 {
-    if (idZalogowanegoUzytkownika > 0)
-        return true;
-    else
-        return false;
+    return (idZalogowanegoUzytkownika > 0);
 }
 
 void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()

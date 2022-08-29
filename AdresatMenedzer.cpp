@@ -10,9 +10,13 @@ void AdresatMenedzer::dodajAdresata()
 
     adresaci.push_back(adresat);
     if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
+    {
         cout << "Adresat zostal dodany" << endl;
+    }
     else
+    {
         cout << "Nie udalo sie dodac nowego adresata do pliku" << endl;
+    }
     system("pause");
 }
 
@@ -20,9 +24,7 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 {
     string daneOstaniegoAdresataWPliku = "";
     Adresat adresat;
-    cout << "ID przed inkrementacja: " << adresat.pobierzId() << endl;
     adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
-    cout << "ID po inkrementacji: " << adresat.pobierzId() << endl;
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     string imie, nazwisko, numerTelefonu, email, adres;
@@ -60,13 +62,13 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
     {
         cout << ">>> ADRESACI <<<" << endl;
         cout << "----------------" << endl;
-        for (int i=0; i < (int) adresaci.size(); i++)
+        for (int i = 0; i < (int) adresaci.size(); i++)
         {
-            cout << adresaci[i].pobierzImie() << endl;
-            cout << adresaci[i].pobierzNazwisko() << endl;
-            cout << adresaci[i].pobierzNumerTelefonu() << endl;
-            cout << adresaci[i].pobierzEmail() << endl;
-            cout << adresaci[i].pobierzAdres() << endl << endl;
+            cout << "Imie: " << adresaci[i].pobierzImie() << endl;
+            cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << endl;
+            cout << "Numer telefonu: " << adresaci[i].pobierzNumerTelefonu() << endl;
+            cout << "Email: " << adresaci[i].pobierzEmail() << endl;
+            cout << "Adres: " << adresaci[i].pobierzAdres() << endl << endl;
         }
     }
     else
@@ -87,23 +89,31 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu()
         imiePoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
         imiePoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
 
-        for (int i=0; i < (int) adresaci.size(); i++)
+        int licznikImion = 0;
+
+        for (int i = 0; i < (int) adresaci.size(); i++)
         {
             if ( imiePoszukiwanegoAdresata == adresaci[i].pobierzImie())
             {
-                cout << adresaci[i].pobierzImie() << endl;
-                cout << adresaci[i].pobierzNazwisko() << endl;
-                cout << adresaci[i].pobierzNumerTelefonu() << endl;
-                cout << adresaci[i].pobierzEmail() << endl;
-                cout << adresaci[i].pobierzAdres() << endl << endl;
+                cout << "Imie: " << adresaci[i].pobierzImie() << endl;
+                cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << endl;
+                cout << "Numer telefonu: " << adresaci[i].pobierzNumerTelefonu() << endl;
+                cout << "Email: " << adresaci[i].pobierzEmail() << endl;
+                cout << "Adres: " << adresaci[i].pobierzAdres() << endl << endl;
+                licznikImion++;
             }
         }
+        if (licznikImion == 0)
+        {
+            cout << "Nie ma osoby o podanym imieniu" << endl;
+        }
+        system("pause");
     }
     else
     {
-        cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
+        cout << endl << "Plik nie istnieje lub ksiazka adresowa jest pusta." << endl << endl;
+        system("pause");
     }
-    system("pause");
 }
 
 void AdresatMenedzer::wyszukajAdresatowPoNazwisku()
@@ -117,21 +127,29 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku()
         nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
         nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
 
-        for (int i=0; i < (int) adresaci.size(); i++)
+        int licznikNazwisk = 0;
+
+        for (int i = 0; i < (int) adresaci.size(); i++)
         {
             if ( nazwiskoPoszukiwanegoAdresata == adresaci[i].pobierzNazwisko())
             {
-                cout << adresaci[i].pobierzImie() << endl;
-                cout << adresaci[i].pobierzNazwisko() << endl;
-                cout << adresaci[i].pobierzNumerTelefonu() << endl;
-                cout << adresaci[i].pobierzEmail() << endl;
-                cout << adresaci[i].pobierzAdres() << endl << endl;
+                cout << "Imie: " << adresaci[i].pobierzImie() << endl;
+                cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << endl;
+                cout << "Numer telefonu: " << adresaci[i].pobierzNumerTelefonu() << endl;
+                cout << "Email: " << adresaci[i].pobierzEmail() << endl;
+                cout << "Adres: " << adresaci[i].pobierzAdres() << endl << endl;
+                licznikNazwisk++;
             }
         }
+        if (licznikNazwisk == 0)
+        {
+            cout << "Nie ma osoby o podanym nazwisku" << endl;
+        }
+        system("pause");
     }
     else
     {
-        cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
+        cout << endl << "Plik nie istnieje lub ksiazka adresowa jest pusta." << endl << endl;
+        system("pause");
     }
-    system("pause");
 }

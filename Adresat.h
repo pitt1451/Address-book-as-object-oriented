@@ -9,6 +9,7 @@ class Adresat
 {
     int id;
     int idUzytkownika;
+    int idUsuwanegoAdresata;
     string imie;
     string nazwisko;
     string numerTelefonu;
@@ -16,10 +17,11 @@ class Adresat
     string adres;
 
 public:
-    Adresat(int id=0, int idUzytkownika=0, string imie="", string nazwisko="", string numerTelefonu="", string email="", string adres="")
+    Adresat(int id=0, int idUzytkownika=0, int idUsuwanegoAdresata=0, string imie="", string nazwisko="", string numerTelefonu="", string email="", string adres="")
     {
         this->id = id;
         this->idUzytkownika = idUzytkownika;
+        this->idUsuwanegoAdresata = idUsuwanegoAdresata;
         this->imie = imie;
         this->nazwisko = nazwisko;
         this->numerTelefonu = numerTelefonu;
@@ -28,6 +30,7 @@ public:
     }
     void ustawId(int noweId);
     void ustawIdUzytkownika(int noweIdUzytkownika);
+    void ustawIdUsuwanegoAdresata(int noweIdUsuwanegoAdresata);
     void ustawImie(string noweImie);
     void ustawNazwisko(string noweNazwisko);
     void ustawNumerTelefonu(string nowyNumerTelefonu);
@@ -36,6 +39,7 @@ public:
 
     int pobierzId();
     int pobierzIdUzytkownika();
+    int pobierzIdUsuwanegoAdresata();
     string pobierzImie();
     string pobierzNazwisko();
     string pobierzNumerTelefonu();

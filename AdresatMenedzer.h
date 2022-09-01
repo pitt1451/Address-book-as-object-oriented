@@ -19,6 +19,7 @@ class AdresatMenedzer
     vector <Adresat> adresaci;
     PlikZAdresatami plikZAdresatami;
     int idOstatniegoAdresata;
+    int idUsunietegoAdresata;
     Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
 
@@ -34,6 +35,7 @@ public:
     void wyswietlWszystkichAdresatow();
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
+    void usunAdresata();
 
 };
 

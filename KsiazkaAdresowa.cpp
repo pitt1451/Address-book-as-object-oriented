@@ -50,6 +50,11 @@ void KsiazkaAdresowa::dodajAdresata()
     }
 }
 
+void KsiazkaAdresowa::usunAdresata()
+{
+    adresatMenedzer->usunAdresata();
+}
+
 void KsiazkaAdresowa::wypiszWszystkichAdresatowDanegoUzytkownika()
 {
     adresatMenedzer->wyswietlWszystkichAdresatow();

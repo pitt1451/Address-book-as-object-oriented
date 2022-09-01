@@ -20,6 +20,49 @@ void AdresatMenedzer::dodajAdresata()
     system("pause");
 }
 
+void AdresatMenedzer::usunAdresata()
+{
+    int idUsuwanegoAdresata;
+    int numerLiniiUsuwanegoAdresata;
+    Adresat adresat;
+
+    system("cls");
+    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
+    cout << "Podaj ID adresata, ktorego chcesz usunac: ";
+
+    idUsuwanegoAdresata = MetodyPomocnicze::wczytajLiczbeCalkowita();
+    adresat.ustawIdUsuwanegoAdresata(idUsuwanegoAdresata);
+
+    char znak;
+    bool czyIstniejeAdresat = false;
+
+    for (int i = 0; i < (int) adresaci.size(); i++)
+    {
+        if (idUsuwanegoAdresata == adresaci[i].pobierzId())
+        {
+            czyIstniejeAdresat = true;
+            cout << endl << "Potwierdz naciskajac klawisz 't': ";
+            znak = MetodyPomocnicze::wczytajZnak();
+            if (znak == 't')
+            {
+                adresaci.erase(adresaci.begin() + i);
+                cout << endl << "Adresat o wybranym ID zostal usuniety" << endl;
+                system("pause");
+            }
+            else
+            {
+                cout << endl << "Nie udalo sie usunac adresata" << endl;
+                system("pause");
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Adresat o takim ID nie istnieje w ksiazce adresowej" << endl;
+        system("pause");
+    }
+}
+
 Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 {
     string daneOstaniegoAdresataWPliku = "";
@@ -64,6 +107,7 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow()
         cout << "----------------" << endl;
         for (int i = 0; i < (int) adresaci.size(); i++)
         {
+            cout << "Id: " << adresaci[i].pobierzId() << endl;
             cout << "Imie: " << adresaci[i].pobierzImie() << endl;
             cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << endl;
             cout << "Numer telefonu: " << adresaci[i].pobierzNumerTelefonu() << endl;
@@ -95,6 +139,7 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu()
         {
             if ( imiePoszukiwanegoAdresata == adresaci[i].pobierzImie())
             {
+                cout << "Id: " << adresaci[i].pobierzId() << endl;
                 cout << "Imie: " << adresaci[i].pobierzImie() << endl;
                 cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << endl;
                 cout << "Numer telefonu: " << adresaci[i].pobierzNumerTelefonu() << endl;
@@ -133,6 +178,7 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku()
         {
             if ( nazwiskoPoszukiwanegoAdresata == adresaci[i].pobierzNazwisko())
             {
+                cout << "Id: " << adresaci[i].pobierzId() << endl;
                 cout << "Imie: " << adresaci[i].pobierzImie() << endl;
                 cout << "Nazwisko: " << adresaci[i].pobierzNazwisko() << endl;
                 cout << "Numer telefonu: " << adresaci[i].pobierzNumerTelefonu() << endl;

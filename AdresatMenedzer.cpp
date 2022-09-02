@@ -24,17 +24,14 @@ void AdresatMenedzer::usunAdresata()
 {
     int idUsuwanegoAdresata;
     int numerLiniiUsuwanegoAdresata;
-    Adresat adresat;
+    char znak;
+    bool czyIstniejeAdresat = false;
 
     system("cls");
     cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
     cout << "Podaj ID adresata, ktorego chcesz usunac: ";
 
     idUsuwanegoAdresata = MetodyPomocnicze::wczytajLiczbeCalkowita();
-    adresat.ustawIdUsuwanegoAdresata(idUsuwanegoAdresata);
-
-    char znak;
-    bool czyIstniejeAdresat = false;
 
     for (int i = 0; i < (int) adresaci.size(); i++)
     {
@@ -43,8 +40,10 @@ void AdresatMenedzer::usunAdresata()
             czyIstniejeAdresat = true;
             cout << endl << "Potwierdz naciskajac klawisz 't': ";
             znak = MetodyPomocnicze::wczytajZnak();
+
             if (znak == 't')
             {
+                plikZAdresatami.usunAdresataZPliku(idUsuwanegoAdresata);
                 adresaci.erase(adresaci.begin() + i);
                 cout << endl << "Adresat o wybranym ID zostal usuniety" << endl;
                 system("pause");
@@ -56,7 +55,7 @@ void AdresatMenedzer::usunAdresata()
             }
         }
     }
-    if (czyIstniejeAdresat == false)
+    if (!czyIstniejeAdresat)
     {
         cout << endl << "Adresat o takim ID nie istnieje w ksiazce adresowej" << endl;
         system("pause");

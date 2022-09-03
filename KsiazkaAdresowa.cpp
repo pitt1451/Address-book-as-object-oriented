@@ -55,6 +55,11 @@ void KsiazkaAdresowa::usunAdresata()
     adresatMenedzer->usunAdresata();
 }
 
+void KsiazkaAdresowa::edytujAdresata()
+{
+    adresatMenedzer->edytujAdresata();
+}
+
 void KsiazkaAdresowa::wypiszWszystkichAdresatowDanegoUzytkownika()
 {
     adresatMenedzer->wyswietlWszystkichAdresatow();
@@ -106,3 +111,5 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
     cin >> wybor;
     return wybor;
 }
+
+

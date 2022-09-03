@@ -52,7 +52,7 @@ int main()
                     ksiazkaAdresowa.usunAdresata();
                     break;
                 case '6':
-                //    ksiazkaAdresowa.edytujAdresata();
+                    ksiazkaAdresowa.edytujAdresata();
                     break;
                 case '7':
                     ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();

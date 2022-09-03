@@ -34,6 +34,7 @@ public:
     int pobierzIdUzytkownikaZDanymiOddzielonymiPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     void usunAdresataZPliku(int idUsuwanegoAdresata);
+    void edytujAdresataWPliku(Adresat adresat);
     void usunPlik(string nazwaPlikuZRozszerzeniem);
     void zmienNazwePliku(string staraNazwa, string nowaNazwa);
 };

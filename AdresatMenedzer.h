@@ -38,7 +38,6 @@ public:
     void usunAdresata();
     void edytujAdresata();
     char wybierzOpcjeZMenuEdycja();
-
 };
 
 #endif

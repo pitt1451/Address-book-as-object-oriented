@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>128</y>
+      <x>8</x>
+      <y>96</y>
       <w>296</w>
       <h>280</h>
     </coordinates>
@@ -39,8 +39,8 @@ KsiazkaAdresowa()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>128</y>
+      <x>400</x>
+      <y>96</y>
       <w>136</w>
       <h>176</h>
     </coordinates>
@@ -61,8 +61,8 @@ KsiazkaAdresowa()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>352</y>
+      <x>400</x>
+      <y>320</y>
       <w>432</w>
       <h>216</h>
     </coordinates>
@@ -93,8 +93,8 @@ KsiazkaAdresowa()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>608</y>
+      <x>400</x>
+      <y>576</y>
       <w>440</w>
       <h>136</h>
     </coordinates>
@@ -118,10 +118,10 @@ KsiazkaAdresowa()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>456</y>
+      <x>8</x>
+      <y>424</y>
       <w>304</w>
-      <h>120</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>MetodyPomocnicze
 --
@@ -133,6 +133,7 @@ KsiazkaAdresowa()
 + pobierzLiczbe(): String
 + wczytajLiczbeCalkowita(): Integer
 + wczytajZnak(): Char
++ pobierzIdAdresataZLinii(): Integer
 
 </panel_attributes>
     <additional_attributes/>
@@ -140,19 +141,15 @@ KsiazkaAdresowa()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>720</y>
+      <x>912</x>
+      <y>688</y>
       <w>408</w>
       <h>248</h>
     </coordinates>
     <panel_attributes>PlikZAdresatami
 --
-- plikTekstowy: fstream
-- adresaci: vector &lt;Adresat&gt; 
-- NAZWA_PLIKU_Z_ADRESATAMI: String
 - idOstatniegoAdresata: Integer
 --
-- czyPlikJestPusty(): Bool
 - zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami: String
 + pobierzIdOstatniegoAdresata(): Integer
 + PlikZAdresatami()
@@ -170,8 +167,8 @@ KsiazkaAdresowa()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>440</y>
+      <x>912</x>
+      <y>408</y>
       <w>424</w>
       <h>240</h>
     </coordinates>
@@ -200,8 +197,8 @@ AdresatMenedzer()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>32</y>
+      <x>912</x>
+      <y>0</y>
       <w>304</w>
       <h>368</h>
     </coordinates>
@@ -236,6 +233,24 @@ Adresat()
 + wyswietlDaneAdresata(): Adresat
 
 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>744</y>
+      <w>184</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>PlikTekstowy
+--
+- NAZWA_PLIKU: String
+--
++ PlikTekstowy()
++ pobierzNazwePliku(): String
++ czyPlikJestPusty(): bool
 </panel_attributes>
     <additional_attributes/>
   </element>

@@ -15,6 +15,7 @@ public:
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
     static int wczytajLiczbeCalkowita();
     static char wczytajZnak();
+    static int pobierzIdAdresataZLinii(string tekst);
 };
 
 #endif

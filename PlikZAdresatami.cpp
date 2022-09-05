@@ -34,14 +34,14 @@ void PlikZAdresatami::usunAdresataZPliku(int idUsuwanegoAdresata)
     odczytywanyPlikTekstowy.open(PlikTekstowy::pobierzNazwePliku().c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
-
     if (odczytywanyPlikTekstowy.good())
     {
         while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
         {
             if(idUsuwanegoAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia))
             {
-                numerWczytanejLinii !=1 ? tymczasowyPlikTekstowy << endl << wczytanaLinia : tymczasowyPlikTekstowy << wczytanaLinia;
+                numerWczytanejLinii != 1 ? tymczasowyPlikTekstowy << endl << wczytanaLinia : tymczasowyPlikTekstowy << wczytanaLinia;
+                idOstatniegoAdresata = MetodyPomocnicze::pobierzIdAdresataZLinii(wczytanaLinia);
             }
             numerWczytanejLinii++;
         }

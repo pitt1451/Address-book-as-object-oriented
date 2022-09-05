@@ -12,7 +12,6 @@ class PlikTekstowy
 
 public:
     PlikTekstowy(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku) {}
-
     string pobierzNazwePliku();
     bool czyPlikJestPusty();
 };

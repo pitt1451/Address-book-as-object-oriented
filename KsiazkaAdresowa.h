@@ -19,7 +19,7 @@ public:
     : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
     {
         adresatMenedzer = NULL;
-    };
+    }
     ~KsiazkaAdresowa()
     {
         delete adresatMenedzer;

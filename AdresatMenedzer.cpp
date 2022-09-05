@@ -23,7 +23,6 @@ void AdresatMenedzer::dodajAdresata()
 void AdresatMenedzer::usunAdresata()
 {
     int idUsuwanegoAdresata;
-    int numerLiniiUsuwanegoAdresata;
     char znak;
     bool czyIstniejeAdresat = false;
 
@@ -66,8 +65,6 @@ void AdresatMenedzer::edytujAdresata()
 {
     system("cls");
     int idEdytowanegoAdresata = 0;
-    int numerLiniiEdytowanegoAdresata = 0;
-    string liniaZDanymiAdresata = "";
     char wybor;
     bool czyIstniejeAdresat = false;
 

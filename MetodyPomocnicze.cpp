@@ -83,3 +83,18 @@ char MetodyPomocnicze::wczytajZnak()
     }
     return znak;
 }
+
+int MetodyPomocnicze::pobierzIdAdresataZLinii(string tekst)
+{
+    int IdAdresataOdczytaneZLinii = 0;
+    int pozycjaZnaku = 0;
+    string odczytaneIdUzytkownikaZTekstu = "";
+    while (tekst[pozycjaZnaku] != '|')
+    {
+        odczytaneIdUzytkownikaZTekstu += tekst[pozycjaZnaku];
+        pozycjaZnaku++;
+    }
+    IdAdresataOdczytaneZLinii = MetodyPomocnicze::konwersjaStringNaInt(odczytaneIdUzytkownikaZTekstu);
+
+    return IdAdresataOdczytaneZLinii;
+}

@@ -14,7 +14,6 @@ using namespace std;
 
 class PlikZAdresatami : public PlikTekstowy
 {
-    vector <Adresat> adresaci;
     int idOstatniegoAdresata;
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
 
@@ -23,7 +22,7 @@ public:
     PlikZAdresatami(string nazwaPlikuZAdresatami) : PlikTekstowy(nazwaPlikuZAdresatami)
     {
         idOstatniegoAdresata = 0;
-    };
+    }
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     bool dopiszAdresataDoPliku(Adresat adresat);
 
